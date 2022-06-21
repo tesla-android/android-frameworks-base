@@ -334,18 +334,7 @@ public class DisplayRotation {
         }
         mDemoRotationLock = SystemProperties.getBoolean("persist.demo.rotationlock", false);
 
-        // It's physically impossible to rotate the car's screen.
-        final boolean isCar = mContext.getPackageManager().hasSystemFeature(
-                PackageManager.FEATURE_AUTOMOTIVE);
-        // It's also not likely to rotate a TV screen.
-        final boolean isTv = mContext.getPackageManager().hasSystemFeature(
-                PackageManager.FEATURE_LEANBACK);
-        mDefaultFixedToUserRotation =
-                (isCar || isTv || mService.mIsPc || mDisplayContent.forceDesktopMode())
-                // For debug purposes the next line turns this feature off with:
-                // $ adb shell setprop config.override_forced_orient true
-                // $ adb shell wm size reset
-                && !"true".equals(SystemProperties.get("config.override_forced_orient"));
+        mDefaultFixedToUserRotation = true;
     }
 
     void applyCurrentRotation(@Surface.Rotation int rotation) {
