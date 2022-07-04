@@ -25,31 +25,23 @@ import com.android.systemui.plugins.qs.QSTile;
 import com.android.systemui.plugins.qs.QSTileView;
 import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.external.CustomTile;
-import com.android.systemui.qs.tiles.AirplaneModeTile;
 import com.android.systemui.qs.tiles.AlarmTile;
-import com.android.systemui.qs.tiles.BatterySaverTile;
 import com.android.systemui.qs.tiles.BluetoothTile;
 import com.android.systemui.qs.tiles.CameraToggleTile;
-import com.android.systemui.qs.tiles.CastTile;
 import com.android.systemui.qs.tiles.CellularTile;
 import com.android.systemui.qs.tiles.ColorInversionTile;
 import com.android.systemui.qs.tiles.DataSaverTile;
 import com.android.systemui.qs.tiles.DeviceControlsTile;
 import com.android.systemui.qs.tiles.DndTile;
 import com.android.systemui.qs.tiles.FlashlightTile;
-import com.android.systemui.qs.tiles.HotspotTile;
-import com.android.systemui.qs.tiles.InternetTile;
 import com.android.systemui.qs.tiles.LocationTile;
 import com.android.systemui.qs.tiles.MicrophoneToggleTile;
 import com.android.systemui.qs.tiles.NfcTile;
 import com.android.systemui.qs.tiles.NightDisplayTile;
 import com.android.systemui.qs.tiles.QuickAccessWalletTile;
 import com.android.systemui.qs.tiles.ReduceBrightColorsTile;
-import com.android.systemui.qs.tiles.RotationLockTile;
-import com.android.systemui.qs.tiles.ScreenRecordTile;
 import com.android.systemui.qs.tiles.UiModeNightTile;
 import com.android.systemui.qs.tiles.UserTile;
-import com.android.systemui.qs.tiles.WifiTile;
 import com.android.systemui.qs.tiles.WorkModeTile;
 import com.android.systemui.util.leak.GarbageMonitor;
 
@@ -63,27 +55,19 @@ public class QSFactoryImpl implements QSFactory {
 
     private static final String TAG = "QSFactory";
 
-    private final Provider<WifiTile> mWifiTileProvider;
-    private final Provider<InternetTile> mInternetTileProvider;
     private final Provider<BluetoothTile> mBluetoothTileProvider;
     private final Provider<CellularTile> mCellularTileProvider;
     private final Provider<DndTile> mDndTileProvider;
     private final Provider<ColorInversionTile> mColorInversionTileProvider;
-    private final Provider<AirplaneModeTile> mAirplaneModeTileProvider;
     private final Provider<WorkModeTile> mWorkModeTileProvider;
-    private final Provider<RotationLockTile> mRotationLockTileProvider;
     private final Provider<FlashlightTile> mFlashlightTileProvider;
     private final Provider<LocationTile> mLocationTileProvider;
-    private final Provider<CastTile> mCastTileProvider;
-    private final Provider<HotspotTile> mHotspotTileProvider;
     private final Provider<UserTile> mUserTileProvider;
-    private final Provider<BatterySaverTile> mBatterySaverTileProvider;
     private final Provider<DataSaverTile> mDataSaverTileProvider;
     private final Provider<NightDisplayTile> mNightDisplayTileProvider;
     private final Provider<NfcTile> mNfcTileProvider;
     private final Provider<GarbageMonitor.MemoryTile> mMemoryTileProvider;
     private final Provider<UiModeNightTile> mUiModeNightTileProvider;
-    private final Provider<ScreenRecordTile> mScreenRecordTileProvider;
     private final Provider<ReduceBrightColorsTile> mReduceBrightColorsTileProvider;
     private final Provider<CameraToggleTile> mCameraToggleTileProvider;
     private final Provider<MicrophoneToggleTile> mMicrophoneToggleTileProvider;
@@ -98,27 +82,19 @@ public class QSFactoryImpl implements QSFactory {
     public QSFactoryImpl(
             Lazy<QSHost> qsHostLazy,
             Provider<CustomTile.Builder> customTileBuilderProvider,
-            Provider<WifiTile> wifiTileProvider,
-            Provider<InternetTile> internetTileProvider,
             Provider<BluetoothTile> bluetoothTileProvider,
             Provider<CellularTile> cellularTileProvider,
             Provider<DndTile> dndTileProvider,
             Provider<ColorInversionTile> colorInversionTileProvider,
-            Provider<AirplaneModeTile> airplaneModeTileProvider,
             Provider<WorkModeTile> workModeTileProvider,
-            Provider<RotationLockTile> rotationLockTileProvider,
             Provider<FlashlightTile> flashlightTileProvider,
             Provider<LocationTile> locationTileProvider,
-            Provider<CastTile> castTileProvider,
-            Provider<HotspotTile> hotspotTileProvider,
             Provider<UserTile> userTileProvider,
-            Provider<BatterySaverTile> batterySaverTileProvider,
             Provider<DataSaverTile> dataSaverTileProvider,
             Provider<NightDisplayTile> nightDisplayTileProvider,
             Provider<NfcTile> nfcTileProvider,
             Provider<GarbageMonitor.MemoryTile> memoryTileProvider,
             Provider<UiModeNightTile> uiModeNightTileProvider,
-            Provider<ScreenRecordTile> screenRecordTileProvider,
             Provider<ReduceBrightColorsTile> reduceBrightColorsTileProvider,
             Provider<CameraToggleTile> cameraToggleTileProvider,
             Provider<MicrophoneToggleTile> microphoneToggleTileProvider,
@@ -128,27 +104,19 @@ public class QSFactoryImpl implements QSFactory {
         mQsHostLazy = qsHostLazy;
         mCustomTileBuilderProvider = customTileBuilderProvider;
 
-        mWifiTileProvider = wifiTileProvider;
-        mInternetTileProvider = internetTileProvider;
         mBluetoothTileProvider = bluetoothTileProvider;
         mCellularTileProvider = cellularTileProvider;
         mDndTileProvider = dndTileProvider;
         mColorInversionTileProvider = colorInversionTileProvider;
-        mAirplaneModeTileProvider = airplaneModeTileProvider;
         mWorkModeTileProvider = workModeTileProvider;
-        mRotationLockTileProvider = rotationLockTileProvider;
         mFlashlightTileProvider = flashlightTileProvider;
         mLocationTileProvider = locationTileProvider;
-        mCastTileProvider = castTileProvider;
-        mHotspotTileProvider = hotspotTileProvider;
         mUserTileProvider = userTileProvider;
-        mBatterySaverTileProvider = batterySaverTileProvider;
         mDataSaverTileProvider = dataSaverTileProvider;
         mNightDisplayTileProvider = nightDisplayTileProvider;
         mNfcTileProvider = nfcTileProvider;
         mMemoryTileProvider = memoryTileProvider;
         mUiModeNightTileProvider = uiModeNightTileProvider;
-        mScreenRecordTileProvider = screenRecordTileProvider;
         mReduceBrightColorsTileProvider = reduceBrightColorsTileProvider;
         mCameraToggleTileProvider = cameraToggleTileProvider;
         mMicrophoneToggleTileProvider = microphoneToggleTileProvider;
@@ -169,10 +137,6 @@ public class QSFactoryImpl implements QSFactory {
     private QSTileImpl createTileInternal(String tileSpec) {
         // Stock tiles.
         switch (tileSpec) {
-            case "wifi":
-                return mWifiTileProvider.get();
-            case "internet":
-                return mInternetTileProvider.get();
             case "bt":
                 return mBluetoothTileProvider.get();
             case "cell":
@@ -181,24 +145,14 @@ public class QSFactoryImpl implements QSFactory {
                 return mDndTileProvider.get();
             case "inversion":
                 return mColorInversionTileProvider.get();
-            case "airplane":
-                return mAirplaneModeTileProvider.get();
             case "work":
                 return mWorkModeTileProvider.get();
-            case "rotation":
-                return mRotationLockTileProvider.get();
             case "flashlight":
                 return mFlashlightTileProvider.get();
             case "location":
                 return mLocationTileProvider.get();
-            case "cast":
-                return mCastTileProvider.get();
-            case "hotspot":
-                return mHotspotTileProvider.get();
             case "user":
                 return mUserTileProvider.get();
-            case "battery":
-                return mBatterySaverTileProvider.get();
             case "saver":
                 return mDataSaverTileProvider.get();
             case "night":
@@ -207,8 +161,6 @@ public class QSFactoryImpl implements QSFactory {
                 return mNfcTileProvider.get();
             case "dark":
                 return mUiModeNightTileProvider.get();
-            case "screenrecord":
-                return mScreenRecordTileProvider.get();
             case "reduce_brightness":
                 return mReduceBrightColorsTileProvider.get();
             case "cameratoggle":
