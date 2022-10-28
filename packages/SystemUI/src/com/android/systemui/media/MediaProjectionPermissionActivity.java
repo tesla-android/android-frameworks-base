@@ -86,15 +86,15 @@ public class MediaProjectionPermissionActivity extends Activity
         }
 
         try {
-            if (mService.hasProjectionPermission(mUid, mPackageName)) {
-                setResult(RESULT_OK, getMediaProjectionIntent(mUid, mPackageName));
-                finish();
-                return;
-            }
+            setResult(RESULT_OK, getMediaProjectionIntent(mUid, mPackageName));
         } catch (RemoteException e) {
-            Log.e(TAG, "Error checking projection permissions", e);
+            Log.e(TAG, "Error granting projection permission", e);
+            setResult(RESULT_CANCELED);
+        } finally {
+            if (mDialog != null) {
+                mDialog.dismiss();
+            }
             finish();
-            return;
         }
 
         TextPaint paint = new TextPaint();
