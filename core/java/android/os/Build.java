@@ -1220,6 +1220,7 @@ public class Build {
      * @hide
      */
     public static boolean isBuildConsistent() {
+		/* 
         // Don't care on eng builds.  Incremental build may trigger false negative.
         if (IS_ENG) return true;
 
@@ -1258,7 +1259,7 @@ public class Build {
             }
         }
 
-        /* TODO: Figure out issue with checks failing
+        TODO: Figure out issue with checks failing
         if (!TextUtils.isEmpty(bootimage)) {
             if (!Objects.equals(system, bootimage)) {
                 Slog.e(TAG, "Mismatched fingerprints; system reported " + system
@@ -1283,7 +1284,7 @@ public class Build {
             }
         }
         */
-
+		// Tesla Android is always consistent!
         return true;
     }
 
